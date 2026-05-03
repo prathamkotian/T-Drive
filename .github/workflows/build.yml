@@ -16,10 +16,11 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Build
+        working-directory: app/src-tauri
         run: cargo build --release
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
           name: tdrive
-          path: target/release/
+          path: app/src-tauri/target/release/
