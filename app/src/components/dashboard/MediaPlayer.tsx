@@ -23,7 +23,7 @@ export function MediaPlayer({ file, onClose, onNext, onPrev, currentIndex, total
 
     const folderIdParam = activeFolderId !== null ? activeFolderId.toString() : 'home';
     const streamUrl = streamToken
-        ? `http://localhost:14200/stream/${folderIdParam}/${file.id}?token=${streamToken}`
+        ? `http://localhost:14201/stream/${folderIdParam}/${file.id}?token=${streamToken}`
         : null;
 
     const isVideo = isVideoFile(file.name);
