@@ -1,0 +1,26 @@
+name: Build TDrive
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build
+        working-directory: app/src-tauri
+        run: cargo build --release
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: tdrive
+          path: app/src-tauri/target/release/
